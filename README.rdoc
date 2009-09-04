@@ -1,0 +1,23 @@
+== Xs.to Monitor
+
+Xs.to Monitor is a very simple Rails 2.3.3 application that uses timed urls to monitor the response time of a web site.
+
+Web architectures these days are a cluster of servers running Nginx / php-fpm or Nginx / thin/mongrel/webrick.  What this script/monitor does is it allows you to hit each web server and measure the response time and graph that result.
+
+== Installation
+
+ git clone git://github.com/kshaikh/xs.git
+
+Just clone it, and run rails.  I need to update the environment.rb for the required gems.
+
+ rake db:migrate
+
+To create the database
+
+ thin start
+
+To start the web server.
+
+ script/runner script/monitor
+
+To start the monitor of the web servers.  You can also edit the script/monitor file to put in your list of web servers and customize the URL it measures.  We can easily update this to use net/http instead of curl.
