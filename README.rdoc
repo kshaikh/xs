@@ -24,6 +24,12 @@ To start the web server.
 
 To start the monitor of the web servers.  You can also edit the script/monitor file to put in your list of web servers and customize the URL it measures.  We can easily update this to use net/http instead of curl.
 
+== Graphing
+
+We are using the latest flotr libraries for graphing.  I wanted to use Google Charts API but they don't support more then 300k pixels.  Since that is so 1998 we couldn't limit ourselves to that.  
+
+Instead we are using the very latest flotr w/ prototype js as well as an integrated jQuery library.  All javascript files are located off host for easy updates.
+
 == Testing
 
 The rails application was built with the latest rspec and an rspec_scaffold.  Default testing does indeed past, but no further energy was put forth on testing.
