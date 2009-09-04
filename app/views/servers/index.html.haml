@@ -2,8 +2,6 @@
 = javascript_include_tag "http://www.solutoire.com/experiments/flotr/flotr/flotr-0.1.0alpha.js"
 = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"
 
-= @ips.keys.join(" ")
-
 #container{ :style => 'width:800px; height:600px' }
 
 %script{ :type => 'text/javascript' }
@@ -13,7 +11,7 @@
   - arr = []
   - @ips.keys.each do |ip|
     - i += 1
-    - arr << "d#{i}"
+    - arr << "{data:d#{i}, label:'#{ip}'}"
     = "var d#{i} = #{@ips[ip].to_json};"
   = "var f = Flotr.draw($('container'), [ #{arr.join(', ')} ]);"
   });
