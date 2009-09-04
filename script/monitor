@@ -1,0 +1,27 @@
+#!/usr/bin/ruby
+
+require 'rubygems'
+require 'benchmark'
+
+loop do
+
+  servers = %w(
+    208.53.158.208
+    208.53.158.75
+    208.53.158.42
+    67.159.60.37
+    208.53.158.45
+    66.90.101.97
+    67.159.60.59
+  )
+
+  for server in servers
+    b = Benchmark.measure do
+      system("curl -s http://#{server}/contact.php > /dev/null")
+    end
+    puts "#{server}\t#{"%0.2f" % b.real} seconds"
+    Server.create( :ip => server, :response => b.real )
+  end
+  puts ''
+
+end
