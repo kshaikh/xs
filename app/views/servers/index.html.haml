@@ -6,15 +6,15 @@
 
 #container{ :style => 'width:800px; height:600px' }
 
-:javascript
+%script{ :type => 'text/javascript' }
   var j = jQuery.noConflict();
   j(function() {
-    //var d1 = [];
-    //for(var i = 0; i < 14; i += 0.5)
-    //  d1.push([i, Math.sin(i)]);
-    //var d1 = #{[[0, 3], [4, 8], [8, 5], [9, 13]].to_json};
-    //var d1 = #{[[0,1],[1,2],[2,3],[3,4]].to_json};
-    var d1 = #{@ips.values.first.to_json};
-    var f = Flotr.draw($('container'), [ d1 ]);
+  - i=0
+  - arr = []
+  - @ips.keys.each do |ip|
+    - i += 1
+    - arr << "d#{i}"
+    = "var d#{i} = #{@ips[ip].to_json};"
+  = "var f = Flotr.draw($('container'), [ #{arr.join(', ')} ]);"
   });
 
