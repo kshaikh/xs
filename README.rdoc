@@ -2,6 +2,8 @@
 
 Xs.to Monitor is a very simple Rails 2.3.3 application that uses timed urls to monitor the response time of a web site.
 
+A screenshot is located http://screencast.com/t/2JKk5lGWh9dR
+
 Web architectures these days are a cluster of servers running Nginx / php-fpm or Nginx / thin/mongrel/webrick.  What this script/monitor does is it allows you to hit each web server and measure the response time and graph that result.
 
 == Installation
