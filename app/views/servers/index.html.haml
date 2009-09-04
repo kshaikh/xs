@@ -1,8 +1,12 @@
-= javascript_include_tag "http://www.solutoire.com/experiments/flotr/flotr/lib/prototype-1.6.0.2.js"
-= javascript_include_tag "http://www.solutoire.com/experiments/flotr/flotr/flotr-0.1.0alpha.js"
+= #javascript_include_tag "http://www.solutoire.com/experiments/flotr/flotr/lib/prototype-1.6.0.2.js"
+= #javascript_include_tag "http://www.solutoire.com/experiments/flotr/flotr/flotr-0.1.0alpha.js"
+= javascript_include_tag 'http://phenxdesign.net/projects/flotr/flotr/prototype/lib/prototype.js'
+= javascript_include_tag 'http://phenxdesign.net/projects/flotr/flotr/prototype/lib/canvas2image.js'
+= javascript_include_tag 'http://phenxdesign.net/projects/flotr/flotr/prototype/lib/canvastext.js'
+= javascript_include_tag 'http://phenxdesign.net/projects/flotr/flotr/prototype/flotr.js'
 = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"
 
-#container{ :style => 'width:800px; height:600px' }
+#container{ :style => 'width:1000px; height:600px' }
 
 %script{ :type => 'text/javascript' }
   var j = jQuery.noConflict();
@@ -11,8 +15,17 @@
   - arr = []
   - @ips.keys.each do |ip|
     - i += 1
-    - arr << "{data:d#{i}, label:'#{ip}'}"
+    - arr << "{ data:d#{i}, label:'#{ip}' }"
     = "var d#{i} = #{@ips[ip].to_json};"
-  = "var f = Flotr.draw($('container'), [ #{arr.join(', ')} ]);"
+  var f = Flotr.draw( 
+  $('container'), [ 
+  = arr.join(', ')
+  ], { 
+  title: 'Monitor Servers', 
+  subtitle: 'Response time per web server (seconds) versus Time (minutes)', 
+  xaxis: { title:'Time ago from now (minutes)' }, 
+  yaxis: { title:'Response time per web server (secs)' },
+  HtmlText: false 
+  });
   });
 

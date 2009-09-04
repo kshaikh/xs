@@ -23,5 +23,5 @@ loop do
     Server.create( :ip => server, :response => b.real )
   end
   puts ''
-  sleep 60
+  sleep 5
 end
