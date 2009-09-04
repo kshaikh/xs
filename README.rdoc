@@ -21,3 +21,7 @@ To start the web server.
  script/runner script/monitor
 
 To start the monitor of the web servers.  You can also edit the script/monitor file to put in your list of web servers and customize the URL it measures.  We can easily update this to use net/http instead of curl.
+
+== Testing
+
+The rails application was built with the latest rspec and an rspec_scaffold.  Default testing does indeed past, but no further energy was put forth on testing.
